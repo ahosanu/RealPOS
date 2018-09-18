@@ -1,0 +1,213 @@
+<div class="main" xmlns="">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <input (keyup)="loadCustomer($event)" [value]="member_id" type="text" class="form-control" placeholder="Member ID">
+          </div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <input type="text" class="form-control" [value]="mobile" #mobile_get placeholder="Mobile Number">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [value]="full_name" #name_get placeholder="Customer Name">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <textarea class="form-control" [value]="address" placeholder="Address" #address_get rows="3"></textarea>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [value]="input_id" (keyup)="addItem($event)" placeholder="Scan bar code Or Search Item">
+          <div class="input-group-append">
+            <span class="btn btn-primary"><span class="fa fa-search"></span></span>
+          </div>
+          <div class="input-group-append">
+          <span class="btn btn-primary shop"><span class="fa fa-shopping-cart"></span></span>
+        </div>
+        </div>
+      </div>
+      <div class="full-height">
+        <table class="table show_data table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" width="50%">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Total</th>
+            <th scope="col">Dis.(%)</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let data of dataInvoice">
+            <tr>
+            <th scope="row" class="y-center">{{data.number}}</th>
+            <td class="y-center">{{data.pro_name}}</td>
+            <td>{{data.price}}</td>
+            <td>{{data.unit}}</td>
+            <td>{{(data.price * data.unit)}}</td>
+            <td>{{data.discount}}%</td>
+            <td class="center"><a href=""><i class="fa fa-times-circle"></i></a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class="right_space">
+        <div class="row amount_box">
+          <div class="col-md-6 left_box">
+            <span class="total">Total</span>
+            <p class="amount">৳{{((Total_amount-discount) + vat).toFixed(2)}}</p>
+          </div>
+          <div class="col-md-6 right_box">
+            <div class="sub">
+              <span class="text">Sub Total</span>
+              <span class="amount">৳{{Total_amount.toFixed(2)}}</span>
+            </div>
+            <div class="sub2">
+              <span class="text">Discount</span>
+              <span class="amount">৳{{discount.toFixed(2)}}</span>
+            </div>
+            <div class="sub2">
+              <span class="text">Vat.(15%)</span>
+              <span class="amount">৳{{vat.toFixed(2)}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row pay_type">
+          Add Payment
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-light active"(click)="(pay_by = 1)">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Cash
+            </label>
+            <label class="btn btn-light" (click)="(pay_by = 2)">
+              <input type="radio" name="options" id="option2"autocomplete="off"> Gift Card
+            </label>
+            <label class="btn btn-light" (click)="(pay_by = 3)">
+              <input type="radio" name="options" id="option3" autocomplete="off"> Visa
+            </label>
+            <label class="btn btn-light" (click)="(pay_by = 4)">
+              <input type="radio" name="options" id="option4" autocomplete="off"> Master Card
+            </label>
+            <label class="btn btn-light" (click)="(pay_by = 5)">
+              <input type="radio" name="options" id="option5"  autocomplete="off"> American Express
+            </label>
+          </div>
+        </div>
+        <div class="payment">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="btn btn-primary cash" *ngIf="1===pay_by">Cash</span>
+              <span class="btn btn-primary cash" *ngIf="2===pay_by">Gift</span>
+              <span class="btn btn-primary cash" *ngIf="1 !== pay_by && 2 !== pay_by">Card</span>
+            </div>
+            <input type="number" class="form-control" #pay_on (keyup)="onKey($event)" placeholder="00.00" value="{{(1 !== pay_by && 2 !== pay_by) ? ((Total_amount-discount + vat).toFixed(2)) : ''}}" [value]="pay_on_set">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="btn btn-primary change">Change Amount</span>
+            </div>
+            <input type="number" class="form-control" placeholder="00.00" value="{{change_amount.toFixed(0)}}" readonly>
+          </div>
+          <button type="button" class="btn btn-success print" (click)="pay(name_get.value, mobile_get.value, address_get.value)" onclick="printJS({printable: 'print_id', type: 'html', css: '/php/styles.css'})">Submit & Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="print_id">
+  <div class="main_print">
+    <div class="container-fluid">
+    <div class="center_cont">
+      <img width="100px" src="./assets/logo.png" alt="">
+      <p>United City, Madani Avenue,  Badda, Dhaka 1212, Bangladesh.</p>
+      <hr/>
+      <b><p>Invoice No : {{invoice_se}}</p></b>
+      <p>{{time | date : 'dd-MMM-yyyy hh:mm a'}}</p>
+    </div>
+    <div class="left_cont">
+      <p>Name: {{name_get.value}}</p>
+      <p>Address: {{address_get.value}}</p><br/>
+      <table width="100%">
+        <tbody class="table_title">
+          <tr>
+            <th width="60%">Product</th>
+            <th width="10%">Qty</th>
+            <th width="15%">Price</th>
+            <th width="15%">Total</th>
+          </tr>
+        </tbody>
+        <tbody class="table_title">
+        <tr *ngFor="let data of dataInvoice">
+          <td>{{data.pro_name}}</td>
+          <td>{{data.unit}}</td>
+          <td>{{data.price}}</td>
+          <td>{{(data.price * data.unit)}}</td>
+        </tr>
+        </tbody>
+        <tbody class="table_title">
+        <tr>
+          <td>Sub Total</td>
+          <td>{{total_unit}}</td>
+          <td></td>
+          <td>{{Total_amount.toFixed(2)}}</td>
+        </tr>
+        <tr>
+          <td>Discount</td>
+          <td></td>
+          <td></td>
+          <td>{{discount.toFixed(2)}}</td>
+        </tr>
+        <tr>
+          <td>Vat({{vat_rate}}%)</td>
+          <td></td>
+          <td></td>
+          <td>{{vat.toFixed(2)}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <table style="border-top: 1px solid black;width: 100%;margin-top: 3px;">
+        <tbody class="table_total">
+        <tr>
+          <td style="text-align: left !important;">Net Total</td>
+          <td>{{((Total_amount-discount) + vat).toFixed(2)}}</td>
+        </tr>
+        </tbody>
+        <tbody class="table_title">
+        <tr *ngIf="pay_by === 1">
+          <td>Pay On</td>
+          <td>{{pay_on.value}}</td>
+        </tr>
+        <tr *ngIf="pay_by === 1">
+          <td>Change</td>
+          <td>{{change_amount.toFixed(0)}}</td>
+        </tr>
+        <tr>
+          <td>Payed By</td>
+          <td>{{pay_by === 1 ? 'Cash' : pay_by === 2 ? 'Gift Card' : 'Card'}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="last_cont">
+        Thank You
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>

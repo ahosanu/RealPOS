@@ -1,0 +1,100 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <span>Reprint Invoice</span>
+    <span class="spacer"></span>
+      <button mat-icon-button onclick="printJS({printable: 'print_id', type: 'html', css: '/php/styles.css'})">
+        <mat-icon aria-label="icon-button with a heart icon">printer</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onClose()">
+        <mat-icon aria-label="icon-button with a heart icon">close</mat-icon>
+      </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="user-content">
+  <div class="container">
+    <mat-card-content>
+      <div id="print_id">
+        <div class="main_print">
+          <div class="container-fluid">
+            <div class="center_cont">
+              <img width="100px" src="./assets/logo.png" alt="">
+              <p>United City, Madani Avenue,  Badda, Dhaka 1212, Bangladesh.</p>
+              <hr/>
+              <b><p>Invoice No : {{invoice_se}}</p></b>
+              <p>{{time | date : 'dd-MMM-yyyy hh:mm a'}}</p>
+            </div>
+            <div class="left_cont">
+              <p>Name: {{full_name}}</p>
+              <p>Address: {{address}}</p><br/>
+              <table width="100%">
+                <tbody class="table_title">
+                <tr>
+                  <th width="60%">Product</th>
+                  <th width="10%">Qty</th>
+                  <th width="15%">Price</th>
+                  <th width="15%">Total</th>
+                </tr>
+                </tbody>
+                <tbody class="table_title">
+                <tr *ngFor="let data of dataInvoice">
+                  <td>{{data.pro_name}}</td>
+                  <td>{{data.unit}}</td>
+                  <td>{{data.sale_price}}</td>
+                  <td>{{(data.sale_price * data.unit)}}</td>
+                </tr>
+                </tbody>
+                <tbody class="table_title">
+                <tr>
+                  <td>Sub Total</td>
+                  <td>{{total_unit}}</td>
+                  <td></td>
+                  <td>{{Total_amount.toFixed(2)}}</td>
+                </tr>
+                <tr>
+                  <td>Discount</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{discount.toFixed(2)}}</td>
+                </tr>
+                <tr>
+                  <td>Vat({{vat_rate}}%)</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{vat.toFixed(2)}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <table style="border-top: 1px solid black;width: 100%;margin-top: 3px;">
+                <tbody class="table_total">
+                <tr>
+                  <td style="text-align: left !important;">Net Total</td>
+                  <td>{{((Total_amount-discount) + vat).toFixed(2)}}</td>
+                </tr>
+                </tbody>
+                <tbody class="table_title">
+                <tr *ngIf="pay_by === 1">
+                  <td>Pay On</td>
+                  <td>{{pay_on}}</td>
+                </tr>
+                <tr *ngIf="pay_by === 1">
+                  <td>Change</td>
+                  <td>{{change_amount}}</td>
+                </tr>
+                <tr>
+                  <td>Payed By</td>
+                  <td>{{pay_by === 1 ? 'Cash' : pay_by === 2 ? 'Gift Card' : 'Card'}}</td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="last_cont">
+                Thank You
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </div>
+</div>
+

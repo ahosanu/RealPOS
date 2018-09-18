@@ -1,0 +1,20 @@
+<mat-toolbar color="warn">
+  <span>Expiry Date Alert</span>
+</mat-toolbar>
+<div class="user-content">
+  <div class="container">
+    <mat-card-content>
+      <ul class="productList">
+        <b *ngFor="let data of name">
+          <li>{{data.number}}. {{data.pro_name}}</li>
+        </b>
+      </ul>
+      {{message}}<br/>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="onSubmit()" color="primary">View Product</button>
+      <button mat-raised-button (click)="onClose()">Cancel</button>
+    </mat-card-actions>
+  </div>
+</div>

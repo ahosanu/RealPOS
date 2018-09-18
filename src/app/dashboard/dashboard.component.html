@@ -1,0 +1,49 @@
+<div class="row show_total_info">
+  <div class="col-md-3">
+    <div class="row info_box">
+      <div class="col-md-4 icon1">
+        <i class="fa fa-chart-line"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Sale</p>
+        <p class="number">{{total_sale}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row info_box">
+      <div class="col-md-4 icon2">
+        <i class="fa fa-chart-pie"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Profit</p>
+        <p class="number">{{total_profit}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 ">
+    <div class="row info_box">
+      <div class="col-md-4 icon3">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Customer</p>
+        <p class="number">{{total_customer}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row  info_box">
+      <div class="col-md-4 icon4">
+        <i class="fa fa-tasks"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Items</p>
+        <p class="number">{{total_item}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="width: 70%">
+  <chart [type]="type" [data]="data" [options]="options"></chart>
+</div>

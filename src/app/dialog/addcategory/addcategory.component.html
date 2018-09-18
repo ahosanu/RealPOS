@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span>{{title}} Category</span>
+</mat-toolbar>
+<div class="user-content">
+  <form (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-card-content>
+    <div class="row">
+      <div class="col-md-8">
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Category Name" [formControl]="name" required minlength>
+            <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="user-full-width">
+          <input matInput type="number" placeholder="Discount"  min="0" max="100" [formControl]="discount" >
+        </mat-form-field>
+      </div>
+    </div>
+
+</mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary"> Submit </button>
+      <button mat-raised-button (click)="onClose()"> Cancel</button>
+    </mat-card-actions>
+  </div>
+  </form>
+</div>

@@ -1,0 +1,64 @@
+*:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+table{
+  width: 100% !important;
+}
+.mat-form-field {
+  margin-right: 10px;
+}
+
+.deleteCol{
+  width: 80px !important;
+  flex: none;
+}
+.addUserType {
+  padding: 0 20px !important;
+  mat-form-field {
+    width: 50%;
+  }
+}
+.full {
+  flex: 1 1 auto;
+}
+.user-content{
+  padding: 20px 0 !important;
+}
+
+.addUserUpload{
+  position: relative;
+  img{
+    width: calc(107px * 2);
+    height: calc(54px * 2);
+  }
+  .uploadText{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: calc(107px * 2);
+    height: calc(54px * 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: transparent;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    .mat-icon {
+      height: auto !important;
+      width: auto !important;
+      font-size: 50pt;
+    }
+  }
+  .uploadText:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.51);
+  }
+}

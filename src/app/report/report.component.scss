@@ -1,0 +1,124 @@
+$main_bg_color : #efefe9;
+$top_menu_bg_color: #3fac7a;
+$Side_top_menu_bg_color: #2a9f69;
+$top_contain_height: 60px;
+
+.btn-gr{
+  margin-top: 10px;
+}
+
+.menu{
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.full_view{
+  height: 100%;
+  padding: 0 !important;
+}
+.main_print{
+  position: absolute;
+  left: -10000px;
+  top: 0px;
+  width: 100%;
+  table{
+    width: 200%;
+  }
+}
+
+.show_total_info {
+  margin: 0px;
+  .info_box {
+    margin-right: -10px !important;
+    .icon1,.icon2,.icon3,.icon4 {
+      padding: 10px 16px !important;
+      color: white;
+      font-size: 58px;
+    }
+    .icon1 {
+      background-color: #1cbbb4;
+    }
+    .icon2 {
+      background-color: #f69679;
+    }
+    .icon3 {
+      background-color: #ec008c;
+    }
+    .icon4 {
+      background-color: #8dc63f;
+    }
+    .info {
+      width: 100%;
+      background-color: #FFFFFF;
+      text-align: right;
+      font-family: Lato-Regular;
+      padding: 5px 15px;
+      P {
+        margin: 8px 0px !important;
+        padding: 0;
+      }
+      .text {
+        font-size: 27px;
+        color: #626060;
+      }
+      .number {
+        font-size: 30px;
+        font-weight: bold;
+        margin: -10px 0px;
+      }
+    }
+  }
+  .info_box:last-child{
+    margin-right: 0px;
+  }
+}
+/*Report*/
+.form-group {
+  margin: 0px 10px 0px 0px;
+
+  .input-group-append{
+    cursor: pointer !important;
+  }
+  .mb-3, .my-3 {
+    margin: 0rem !important;
+  }
+}
+.with_control{
+  display: flex;
+  padding: 15px 10px;
+  .full_with{
+    flex: 1 1 auto;
+  }
+}
+table{
+  width: 100% !important;
+}
+.show_data{
+  margin-top: 10px;
+  background-color: white;
+  tr{
+    font-family: "Lato-Regular" !important;
+    th{
+      border: 1px solid #dee2e6 !important;
+      border-bottom: 2px solid #dee2e6 !important;
+      padding: 0.75rem;
+      font-size: 15px !important;
+      font-weight: bold;
+      vertical-align: middle;
+      color: black;
+      text-align: center;
+    }
+    td{
+      font-family: "Lato-Regular" !important;
+      vertical-align: middle;
+      border: 1px solid #dee2e6 !important;
+      padding: 0 20px;
+    }
+    :first-child{
+      font-weight: bold;
+      text-align: center;
+      width: 7%;
+    }
+  }
+}
+/*End Report*/

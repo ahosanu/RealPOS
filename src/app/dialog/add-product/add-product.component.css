@@ -1,0 +1,56 @@
+*:focus {
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+mat-card-title {
+  font-weight: bold;
+  font-size: 17pt; }
+
+.user-full-width {
+  width: 100%; }
+
+.user-content {
+  padding: 20px 0 !important; }
+
+mat-grid-tile {
+  background: lightblue; }
+
+.addUserUpload {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .addUserUpload img {
+    width: 165px;
+    height: 165px;
+    border-radius: 50%; }
+  .addUserUpload .uploadText {
+    position: absolute;
+    width: 165px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    color: transparent;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s; }
+    .addUserUpload .uploadText .mat-icon {
+      height: auto !important;
+      width: auto !important;
+      font-size: 50pt; }
+  .addUserUpload .uploadText:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.51); }
+
+mat-card-actions button {
+  margin-right: 5px; }
+
+/*# sourceMappingURL=add-product.component.css.map */

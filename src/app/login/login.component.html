@@ -1,0 +1,24 @@
+<div class="center-login">
+    <form (ngSubmit)="OnSubmit(user.value, password.value)">
+    <div class="login-card">
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <img src="./assets/logo.png">
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <div class="container-login">
+            <mat-form-field>
+                <input matInput placeholder="Enter your User Name" [formControl]="user" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="user.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password">
+                <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="password.invalid">{{getErrorMessagePass()}}</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+    </div>
+    </form>
+</div>

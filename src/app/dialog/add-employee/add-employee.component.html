@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+  <span>{{title}} Employee</span>
+</mat-toolbar>
+<div class="user-content">
+  <form (ngSubmit)="onSubmit(type.value,userImageFile)">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <mat-card-content>
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Full Name" [formControl]="fullName" required minlength>
+            <mat-error *ngIf="fullName.invalid">{{getFullNameMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="User Name" *ngIf="id === -1" [formControl]="user_name" (keyup)="validateUsername()" required minlength>
+            <input matInput placeholder="User Name" *ngIf="id !== -1" [formControl]="user_name" readonly>
+            <mat-error *ngIf="user_name.invalid">{{getUserNameMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Enter your email" [formControl]="email">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Mobile"  [formControl]="mobile" required minlength>
+            <mat-error *ngIf="mobile.invalid">{{getMobileMessage()}}</mat-error>
+          </mat-form-field>
+          <!--<mat-radio-group class="user-full-width">
+            <mat-radio-button checked value="male" (change)="sex = 'male'">Male</mat-radio-button>
+            <mat-radio-button value="female" (change)="sex = 'female'">Female</mat-radio-button>
+          </mat-radio-group>-->
+          <mat-form-field class="user-full-width">
+            <mat-select placeholder="User Type" [(value)]="TSelect" #type>
+              <mat-option *ngFor="let userType of userTypes" [value]="userType.ut_id">
+                {{userType.ut_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="user-full-width">
+            <textarea matInput placeholder="Address" [formControl]="address"></textarea>
+            <mat-error *ngIf="address.invalid">{{getAddressMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+      </div>
+      <div class="col-md-4">
+        <div class="addUserUpload">
+          <img src="{{photo == '' ? './assets/user.png' : url + photo}}" #userImageView>
+          <input type="file" hidden #userImageFile/>
+          <div class="uploadText" (click)="userImage(userImageView,userImageFile)"><mat-icon>file_upload</mat-icon>Upload Photo</div>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary"> Submit </button>
+      <button mat-raised-button (click)="onClose()"> Cancel</button>
+    </mat-card-actions>
+  </div>
+  </form>
+</div>

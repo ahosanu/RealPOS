@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACN,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,kBAAkB,EAAE,IAAI;EACxB,UAAU,EAAE,IAAI;;AAElB,iBAAiB;EACf,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,OAAO,EAAE,MAAM;EACf,aAAa,EAAE,cAAc;EAC7B,aAAa,EAAE,IAAI;;AAErB,aAAa;EACX,OAAO,EAAE,iBAAiB;;AAI1B,uBAAM;EACJ,YAAY,EAAE,GAAG",
+"sources": ["confirm.component.scss"],
+"names": [],
+"file": "confirm.component.css"
+}

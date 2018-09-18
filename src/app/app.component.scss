@@ -1,0 +1,10 @@
+*:focus{
+ /* background-size: 100% 2px, 100% 1px;*/
+  outline: none;
+}
+*:focus {
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}

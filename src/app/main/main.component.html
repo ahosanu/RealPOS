@@ -1,0 +1,63 @@
+
+<div class="container-fluid full_view">
+
+  <nav class="side_menu">
+    <div class="image"><img src="./assets/logo.png" alt=""></div>
+    <ul>
+      <li class="sale"><a routerLink="/main/sale" routerLinkActive="active"> Start Sale</a></li>
+      <li *ngIf="access_mode === '0' || access_mode === '3'"><a routerLink="/main/dashboard" routerLinkActive="active"> Dashboard</a></li>
+      <li><a routerLink="/main/products" routerLinkActive="active"> Product</a></li>
+      <li><a routerLink="/main/invoice_list" routerLinkActive="active"> Invoice List</a></li>
+      <li><a routerLink="/main/category" routerLinkActive="active"> Category</a></li>
+      <li *ngIf="access_mode === '0' || access_mode === '3' || access_mode === '2'"><a routerLink="/main/employee" routerLinkActive="active"> Employee</a></li>
+      <li><a routerLink="/main/customer" routerLinkActive="active"> Customer</a></li>
+      <li *ngIf="access_mode === '0'|| access_mode === '3' || access_mode === '2'"><a routerLink="/main/report" routerLinkActive="active"> Report</a></li>
+      <li *ngIf="access_mode === '0' || access_mode === '3'"><a routerLink="/main/setting" routerLinkActive="active"> Setting</a></li>
+    </ul>
+  </nav>
+  <nav class="top_menu">
+    <ul>
+      <li class="time">
+        <i class="clock">{{dateTime | date: 'hh:mm:ss'}}</i><i class="ap">{{dateTime | date: 'a'}}</i><br/><i class="date">{{dateTime | date: 'dd MMMM, yyyy'}}</i>
+      </li>
+      <li>
+        <a href="" class="icon"><i class="fa fa-globe-americas"></i><span>19</span></a>
+        <!--<ul>
+          <li><a href=""> One notification 1</a>
+          <li><a href=""> One notification 2</a>
+          <li><a href=""> One notification 3</a>
+          <li><a href=""> One notification 4</a>
+          <li><a href=""> One notification 5</a>
+          <li><a href=""> One notification 6</a>
+          <li><a href=""> One notification 7</a>
+        </ul>-->
+      </li>
+      <li>
+        <a href="" class="icon"> <i class="fa fa-envelope"></i><span>16</span></a>
+        <!--<ul>
+          <li><a href=""> One Message 1</a>
+          <li><a href=""> One Message 2</a>
+          <li><a href=""> One Message 3</a>
+          <li><a href=""> One Message 4</a>
+          <li><a href=""> One Message 5</a>
+          <li><a href=""> One Message 6</a>
+          <li><a href=""> One Message 7</a>
+        </ul>-->
+      </li>
+      <li >
+        <a href="" class="user">
+          <img class="text" src="{{photo}}" alt="">
+          <div class="text"><i class="name">{{userName}}</i><br/><i class="des">{{userType}}</i></div>
+        </a>
+        <ul>
+          <!--<li><a href=""> Edit Profile</a>-->
+          <li><a> Change Password</a>
+          <li><a href="/login"> Log Out</a>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid main">
+    <router-outlet></router-outlet>
+  </div>
+</div>

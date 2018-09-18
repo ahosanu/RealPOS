@@ -1,0 +1,195 @@
+<div class="with_control">
+
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" [formControl]="start_date" placeholder="Start Date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" [formControl]="End_date" placeholder="End Date">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <samp class="btn-gr"><button mat-raised-button color="primary" (click)="loadTable_date()">Create</button></samp>
+  <samp class="full_with"></samp>
+  <samp class="btn-gr"><button mat-raised-button (focus)="false" onclick="printJS({printable: 'print_id', type: 'html', css: '/php/Report.css', maxWidth: '1240'})"><mat-icon>printer</mat-icon> Print</button></samp>
+</div>
+<div class="row show_total_info">
+  <div class="col-md-3">
+    <div class="row info_box">
+      <div class="col-md-4 icon1">
+        <i class="fa fa-chart-line"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Sale</p>
+        <p class="number">{{total_sale}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row info_box">
+      <div class="col-md-4 icon2">
+        <i class="fa fa-chart-pie"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Profit</p>
+        <p class="number">{{total_profit}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 ">
+    <div class="row info_box">
+      <div class="col-md-4 icon3">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Customer</p>
+        <p class="number">{{total_customer}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="row  info_box">
+      <div class="col-md-4 icon4">
+        <i class="fa fa-tasks"></i>
+      </div>
+      <div class="col-md-8 info">
+        <p class="text">Total Items</p>
+        <p class="number">{{total_item}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<table mat-table [dataSource]="dataSource" class="show_data">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="pro_name">
+    <th mat-header-cell *matHeaderCellDef width="40%"> Product Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.pro_name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="buy_price">
+    <th mat-header-cell *matHeaderCellDef> Buy Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.buy_price}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="sale_pro">
+    <th mat-header-cell *matHeaderCellDef> Sale Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.sale_price}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pro_unit_sale_unit">
+    <th mat-header-cell *matHeaderCellDef> Sale Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.sale_unit === null ? '0' : element.sale_unit}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pro_buy_unit">
+    <th mat-header-cell *matHeaderCellDef> Buy Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.buy_unit === null ? element.quantity : element.buy_unit}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pro_unit">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pro_profit">
+    <th mat-header-cell *matHeaderCellDef> Profit </th>
+    <td mat-cell *matCellDef="let element"> {{element.profit === null ? '0':element.profit}} </td>
+  </ng-container>
+  <ng-container matColumnDef="pro_exp_date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.expiry_date === null ? '':element.expiry_date * 1000 | date: 'dd/MM/yyyy'}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<div id="print_id">
+  <div class="main_print">
+    <div class="row show_total_info">
+      <div class="col-md-3">
+        <div class="row info_box">
+          <div class="col-md-4 icon1">
+            <i class="fa fa-chart-line"></i>
+          </div>
+          <div class="col-md-8 info">
+            <p class="text">Total Sale</p>
+            <p class="number">{{total_sale}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="row info_box">
+          <div class="col-md-4 icon2">
+            <i class="fa fa-chart-pie"></i>
+          </div>
+          <div class="col-md-8 info">
+            <p class="text">Total Profit</p>
+            <p class="number">{{total_profit}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 ">
+        <div class="row info_box">
+          <div class="col-md-4 icon3">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="col-md-8 info">
+            <p class="text">Customer</p>
+            <p class="number">{{total_customer}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="row  info_box">
+          <div class="col-md-4 icon4">
+            <i class="fa fa-tasks"></i>
+          </div>
+          <div class="col-md-8 info">
+            <p class="text">Total Items</p>
+            <p class="number">{{total_item}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table show_data table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" width="40%">Product Name</th>
+        <th scope="col">Buy Price</th>
+        <th scope="col">Sale Price</th>
+        <th scope="col">Sale Quantity</th>
+        <th scope="col">Buy Quantity</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Profit</th>
+        <th scope="col">Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of data_row">
+        <th scope="row">{{data.number}}</th>
+        <td>{{data.pro_name}}</td>
+        <td>{{data.buy_price}}</td>
+        <td>{{data.sale_price}}</td>
+        <td>{{data.sale_unit == null ? '0' : data.sale_unit}}</td>
+        <td>{{data.buy_unit === null ? data.quantity : data.buy_unit}}</td>
+        <td>{{data.quantity}}</td>
+        <td>{{data.profit === null ? '0':data.profit}}</td>
+        <td>{{data.expiry_date === null ? '': data.expiry_date * 1000 | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

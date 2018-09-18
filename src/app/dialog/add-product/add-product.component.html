@@ -1,0 +1,66 @@
+<mat-toolbar color="primary">
+  <span>{{title}} Item</span>
+</mat-toolbar>
+
+<div class="user-content">
+  <div class="container">
+    <form (ngSubmit)="onSubmit(type.value)">
+    <mat-card-content>
+      <mat-form-field class="user-full-width">
+        <input matInput placeholder="Item Name" [formControl]="pro_name" name="item" required minlength>
+        <mat-error *ngIf="pro_name.invalid">{{getErrorMessageunit()}}</mat-error>
+      </mat-form-field>
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Buy Price" name="buy" [formControl]="buy_price" type="number" required minlength>
+            <mat-error *ngIf="buy_price.invalid">{{getErrorMessageAmountbuy()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="user-full-width">
+            <mat-select placeholder="Category" [(value)]="TSelect" #type>
+              <mat-option *ngFor="let userType of userTypes" [value]="userType.ca_id">
+                {{userType.ca_name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="Sale Price" name="sale" type="number" [formControl]="sale_price" required minlength>
+            <mat-error *ngIf="sale_price.invalid">{{getErrorMessageAmountsale()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="user-full-width">
+            <input matInput placeholder="In Stock Unit" name="unit" type="number" [formControl]="unit" required minlength>
+            <mat-error *ngIf="unit.invalid">{{getErrorMessageunit()}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div><mat-checkbox [checked]="checked" (change)="checked = !checked">Have Expiry Date!</mat-checkbox></div>
+      <div class="row" *ngIf="checked">
+      <div class="col-md-6">
+        <mat-form-field  class="user-full-width">
+          <input matInput [matDatepicker]="picker1" name="date_mk" [formControl]="mak_date" placeholder="Make Date" [value]="mak_date.value">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="user-full-width">
+          <input matInput [matDatepicker]="picker2" name="date_exp" [formControl]="exp_date" placeholder="Expiry Date" [value]="exp_date.value">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary"> Submit </button>
+      <button mat-raised-button (click)="onClose()">Cancel</button>
+    </mat-card-actions>
+    </form>
+  </div>
+</div>
