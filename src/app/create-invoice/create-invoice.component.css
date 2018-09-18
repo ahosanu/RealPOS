@@ -31,7 +31,8 @@
   .main .full-height::-webkit-scrollbar-thumb {
     background-color: rgba(77, 77, 77, 0.31); }
   .main .center a {
-    color: #ff412b; }
+    color: #ff412b;
+    cursor: pointer; }
   .main input, .main textarea {
     border-radius: 0px; }
 

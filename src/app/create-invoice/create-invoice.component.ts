@@ -147,5 +147,17 @@ export class CreateInvoiceComponent implements OnInit {
         this.pay_on_set = event.target.value;
         this.change_amount = (this.Total_amount - this.discount + this.vat - event.target.value);
     }
+
+    removePro(id: any) {
+        this.dataInvoice.splice( this.dataInvoice.indexOf(id), 1 );
+        this.input_id = '';
+        this.Total_amount = 0;
+        this.discount = 0;
+        for (const datax of this.dataInvoice) {
+            this.Total_amount = this.Total_amount + (datax.price * datax.unit);
+            this.discount += (datax.price * datax.unit) * (datax.discount / 100);
+        }
+        this.vat = (this.Total_amount - this.discount) * (this.vat_rate / 100);
+    }
 }
 

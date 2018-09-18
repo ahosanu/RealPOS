@@ -96,7 +96,17 @@ export class ProductsComponent implements OnInit {
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-        this.dataSource.filter = filterValue;
+        const re = /\//gi;
+        if (filterValue.search(re) === -1 ) {
+            this.dataSource.filter = filterValue;
+        } else {
+            const dat = filterValue.split('/');
+            if (dat[2] !== undefined) {
+                this.dataSource.filter = (new Date(dat[1] + '/' + dat[0] + '/' + dat[2]).getTime() / 1000).toString();
+            } else {
+                this.dataSource.filter = (new Date().getTime() / 1000).toString();
+            }
+        }
     }
 
     DeletePro(pro_id: number | string, name: string) {
