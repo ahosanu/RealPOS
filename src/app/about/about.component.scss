@@ -1,0 +1,31 @@
+.main_about{
+  margin-top: 15px;
+  .block {
+    margin-top: 15px;
+    background: #7ca5c796;
+    padding: 19px;
+    text-align: center;
+    img {
+      width: 120px;
+      vertical-align: middle;
+      border-style: none;
+      border-radius: 50%;
+      border: 2px solid #979a9c;
+    }
+    .title{
+      font-size: 25px;
+      font-weight: bold;
+      padding: 16px 0;
+    }
+    .des{
+      padding: 9px;
+      font-size: 20px;
+      padding-bottom: 16px;
+    }
+    p{
+      text-align: left;
+      margin-top: 12px;
+      color: #545151;
+    }
+  }
+}

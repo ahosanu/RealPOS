@@ -36,6 +36,7 @@ import { ExpAlertComponent } from './dialog/exp-alert/exp-alert.component';
 import { RePrintComponent } from './dialog/re-print/re-print.component';
 import { BarcodePrintComponent } from './dialog/barcode-print/barcode-print.component';
 import { SettingComponent } from './setting/setting.component';
+import { AboutComponent } from './about/about.component';
 const appRoutes: Routes =  [
     {
         path: 'main',
@@ -88,6 +89,10 @@ const appRoutes: Routes =  [
                 component: CustomerComponent
             },
             {
+                path: 'about',
+                component: AboutComponent
+            },
+            {
                 path: '**',
                 canActivate: [AuthguardGuard],
                 redirectTo: 'sale'
@@ -120,7 +125,8 @@ const appRoutes: Routes =  [
     ExpAlertComponent,
     RePrintComponent,
     BarcodePrintComponent,
-    SettingComponent
+    SettingComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

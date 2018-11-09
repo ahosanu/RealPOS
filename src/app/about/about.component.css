@@ -1,0 +1,27 @@
+.main_about {
+  margin-top: 15px; }
+  .main_about .block {
+    margin-top: 15px;
+    background: #7ca5c796;
+    padding: 19px;
+    text-align: center; }
+    .main_about .block img {
+      width: 120px;
+      vertical-align: middle;
+      border-style: none;
+      border-radius: 50%;
+      border: 2px solid #979a9c; }
+    .main_about .block .title {
+      font-size: 25px;
+      font-weight: bold;
+      padding: 16px 0; }
+    .main_about .block .des {
+      padding: 9px;
+      font-size: 20px;
+      padding-bottom: 16px; }
+    .main_about .block p {
+      text-align: left;
+      margin-top: 12px;
+      color: #545151; }
+
+/*# sourceMappingURL=about.component.css.map */

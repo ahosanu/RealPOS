@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class WebServiceService {
-  MAIN_URL = '';
+  MAIN_URL = 'http://localhost';
   MAIN_Access: any;
   constructor(private http: HttpClient) { }
   getLoginAccess(user: String, Pass: String): Observable<any> {
